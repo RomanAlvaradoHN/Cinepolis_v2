@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cinepolis_v2.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False"
+             Title="Login">
+    
+    
+    
+    <VerticalStackLayout Margin="20, 96, 20, 40">
+        <Image Source="cinepolis_logo.png"
+               Aspect="AspectFill" />
+        
+        <Label Text="Iniciar Sesión" FontSize="Large"
+               FontFamily="GilroySemiBold"
+               Margin="0,20"
+               HorizontalOptions="Center"/>
+        
+        <Entry Placeholder="Correo electrónico"
+               Margin="0,10"
+               x:Name="EmailEntry" />
+        
+        <Entry Placeholder="Contraseña"
+               IsPassword="True"
+               Margin="0,10"
+               x:Name="PasswordEntry" />
+        
+        
+        
+        <Button Text="Ingresar"
+                Margin="0,20"
+                x:Name="LoginButton"
+                Clicked="LoginButton_Clicked"
+                FontSize="16" />
+        
+        <Label Text="¿Olvido su contraseña?"
+               FontSize="16"
+               TextColor="#002f6c"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontAttributes="None"
+               FontFamily="GilroySemiBold"
+               Margin="0,20">
+            
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ForgotPasswordLinkClicked" />
+            </Label.GestureRecognizers>
+            <Label.TextDecorations>
+                <TextDecorations>Underline</TextDecorations>
+            </Label.TextDecorations>
+        </Label>
+        
+        
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="CenterAndExpand"
+                     Spacing="4"
+                     Margin="0,12">
+            <Label Text="¿No tienes cuenta?"
+                   TextColor="Gray"
+                   FontSize="16"
+                   FontFamily="GilroySemiBold"
+                   VerticalOptions="Center" />
+            <Label Text="Registrate"
+                   FontSize="16"
+                   FontFamily="GilroySemiBold"
+                   TextColor="#002f6c"
+                   VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSignUpLinkClicked" />
+                </Label.GestureRecognizers>
+                <Label.TextDecorations>
+                    <TextDecorations>Underline</TextDecorations>
+                </Label.TextDecorations>
+            </Label>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
