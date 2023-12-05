@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cinepolis_v2.Views.Home"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="10">
+
+            <Image
+                Source="cinepolis_logo.svg"
+                HeightRequest="75" />
+
+            <Picker x:Name="pickerCine"
+                    Title="Elegir cine:"
+                    CharacterSpacing="1"
+                    FontSize="15"
+                    TitleColor="Gray"
+                    FontFamily="Gilroy-SemiBold">
+            </Picker>
+
+            <Label Text="Cartelera" 
+                   FontSize="18" 
+                   Margin="5,20,10,5" 
+                   TextColor="#002f6c"
+                   FontFamily="Gilroy-SemiBold"/>
+            <!-- Primer CarouselView -->
+            <CarouselView x:Name="carouselPeliculas" Margin="5,6,5,5" IndicatorView="indicatorV">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="#002f6c"
+                                HeightRequest="450"
+                                Stroke="#002f6c"
+                                StrokeShape="RoundRectangle 30,30,30,30"
+                                StrokeThickness="1"
+                                WidthRequest="300">
+                            <Grid>
+                                <Image Grid.RowSpan="3"
+                                       Aspect="AspectFill"
+                                       Source="{Binding Imagen}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnCarouselItemTapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <StackLayout Grid.Row="2"
+                                             BackgroundColor="Gray"
+                                             Margin="0,400,0,0">
+                                    <!-- Cambié MovieTime por Descripcion -->
+                                    <Label Text="{Binding DuracionMinutos}"
+                                           Margin="15,0,0,0" />
+                                    <Label Text="{Binding Titulo}"
+                                           TextColor="#002f6c"
+                                           FontSize="16"
+                                           FontFamily="Gilroy-SemiBold"
+                                           Margin="15,0,0,0" />
+                                </StackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="indicatorV"
+                           HorizontalOptions="Center"
+                           IndicatorColor="DarkGray"
+                           IndicatorSize="8"
+                           SelectedIndicatorColor="#002f6c"
+                           Margin="5"
+                           VerticalOptions="Center"/>
+
+
+
+            <Label Text="© Grupo #3 - 2023" Margin="125,15,10,10"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

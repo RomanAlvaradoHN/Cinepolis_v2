@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cinepolis_v2.Views.SignUpPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False"
+             Title="Registrarse">
+    
+    
+    <VerticalStackLayout Margin="28,96">
+        <Image Source="cinepolis_logo.png"
+               Aspect="AspectFill" />
+        <Label Text="Registrarse"
+               FontSize="Large"
+               FontFamily="GilroySemiBold"
+               Margin="0,20" />
+       
+     
+        <Entry Placeholder="Correo electrónico"
+               Margin="0,10"
+               x:Name="EmailEntry" />
+        
+        <Entry Placeholder="Contraseña"
+               IsPassword="True"
+               Margin="0,10"
+               x:Name="PasswordEntry" />
+        <Entry Placeholder="Confirmar contraseña"
+               IsPassword="True"
+               Margin="0,10"
+               x:Name="ConfirmPasswordEntry" />
+        <Button Text="Registrarse"
+                Clicked="SignUpButton_Clicked"
+                Margin="0,20"
+                x:Name="SignUpButton"
+                FontSize="16" />
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="CenterAndExpand"
+                     Spacing="4"
+                     Margin="0,12">
+            <Label Text="¿Ya tienes una cuenta?"
+                   TextColor="Gray"
+                   FontSize="16"
+                   FontFamily="GilroySemiBold"
+                   VerticalOptions="Center" />
+            <Label Text="Iniciar sesión"
+                   FontSize="16"
+                   FontFamily="GilroySemiBold"
+                   TextColor="#002f6c"
+                   VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSignInLinkClicked" />
+                </Label.GestureRecognizers>
+                <Label.TextDecorations>
+                    <TextDecorations>Underline</TextDecorations>
+                </Label.TextDecorations>
+            </Label>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

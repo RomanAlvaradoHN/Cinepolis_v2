@@ -1,13 +1,14 @@
-using System.Diagnostics;
-using Cinepolis_v2.Controllers;
 using Cinepolis_v2.Models;
+using Cinepolis_v2.Controllers;
 namespace Cinepolis_v2.Views;
 
 public partial class LoginPage : ContentPage
 {
+    LoginController controller;
     
 	public LoginPage(){
 		InitializeComponent();
+        controller = new LoginController();
     }
 
     
@@ -21,23 +22,26 @@ public partial class LoginPage : ContentPage
         Usuario u = new Usuario(EmailEntry.Text, PasswordEntry.Text);
 
         if (!u.GetDatosInvalidos().Any()) {
-            List<Usuario> usuarios = await App.api.ValidarUsuario(u);
-            if(usuarios.Count() > 0) {
-                if (!usuarios[0].GetDatosInvalidos().Any()) {
+            string resp = await controller.ValidarUsuario(u);
+            switch (resp) {
+                case "verificado":
+                    //await Navigation.PushAsync(new NavigationPage(new AppShell()));
+                    App.Current.MainPage = new AppShell();
+                    await Navigation.PopToRootAsync();
+                    break;
 
+                case "denegado":
+                    await DisplayAlert("Login", "Acceso denegado, valide las credenciales", "Aceptar");
+                    break;
 
-                }else{
-                    await DisplayAlert("Login Error", usuarios[0].GetDatosInvalidos().ToString(), "Aceptar");
-                }
-            } else{
-                await DisplayAlert("Login", "Usuario o contraseña incorrecto", "Aceptar");
+                default:
+                    await DisplayAlert("Error", resp, "Aceptar");
+                    break;
             }
 
-
         } else {
-            string msj = string.Join("\n", u.GetDatosInvalidos());
-            await DisplayAlert("Atencion:", msj, "Aceptar");
-        }        
+            throw new Exception(string.Join("\n", u.GetDatosInvalidos()));
+        }
     }
 
 
@@ -47,13 +51,14 @@ public partial class LoginPage : ContentPage
 
 
 
-    private void ForgotPasswordLinkClicked(object sender, EventArgs e)
-    {
-        
+    private async void ForgotPasswordLinkClicked(object sender, EventArgs e){
+        await Navigation.PushAsync(new ForgotPasswordPage(), true);
     }
 
-    private void OnSignUpLinkClicked(object sender, EventArgs e)
-    {
-        
+
+
+
+    private async void OnSignUpLinkClicked(object sender, EventArgs e){
+        await Navigation.PushAsync(new SignUpPage(), true);
     }
 }

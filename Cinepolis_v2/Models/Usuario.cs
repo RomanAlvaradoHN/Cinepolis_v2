@@ -20,7 +20,7 @@ namespace Cinepolis_v2.Models {
         }
 
         public Usuario(string errorMessage) {
-            invalidData.Add(errorMessage);
+            this.invalidData.Add(errorMessage);
         }
         
         public List<string> GetDatosInvalidos() {

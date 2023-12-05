@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cinepolis_v2.Views.MovieDetailPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False"
+             Title="Detalle Película">
+
+    <ScrollView>
+        <Grid Margin="15">
+            <Border StrokeShape="RoundRectangle 30,30,30,30"
+                    HeightRequest="215"
+                    Margin="0,-490,0,0">
+                <Image Source="{Binding Imagen}"/>
+            </Border>
+            <Grid Margin="5,225,0,0">
+                <Label Text="{Binding Titulo}"
+                       FontFamily="Gilroy-SemiBold"
+                       FontSize="25"
+                       Grid.Column="0"/>
+                <Label Text="{Binding DuracionMinutos}"
+                       TextColor="Gray"
+                       Margin="104,8,0,0"
+                       FontFamily="Gilroy-SemiBold"
+                       FontSize="16"
+                       Grid.Column="1"/>
+                <Label Text="Sinopsis"
+                       TextColor="#002f6c"
+                       Margin="0,50,0,0"
+                       FontFamily="Gilroy-SemiBold"
+                       FontSize="19"
+                       Grid.Row="1"/>
+                <Label Text="{Binding Sinopsis}"
+                       TextColor="Gray"
+                       Margin="0,80,0,0"
+                       FontFamily="Gilroy-Medium"
+                       FontSize="17"
+                       Grid.Row="2"/>
+                <Label Text="Horarios"
+                       TextColor="#002f6c"
+                       Margin="0,320,0,0"
+                       FontFamily="Gilroy-SemiBold"
+                       FontSize="19"
+                       Grid.Row="3"/>
+            </Grid>
+            <HorizontalStackLayout Margin="0,10,0,0">
+                <Button WidthRequest="120"
+                        HeightRequest="50"
+                        Margin="0,510,0,0"
+                        Text="3:00 PM"
+                        BackgroundColor="#add8e6"
+                        TextColor="Black">
+                </Button>
+                <Button WidthRequest="120"
+                        HeightRequest="50"
+                        Margin="10,510,0,0"
+                        Text="5:00 PM"
+                        BackgroundColor="#add8e6"
+                        TextColor="Black">
+                </Button>
+                <Button WidthRequest="120"
+                        HeightRequest="50"
+                        Margin="10,510,0,0"
+                        Text="7:00 PM"
+                        BackgroundColor="#add8e6"
+                        TextColor="Black">
+                </Button>
+            </HorizontalStackLayout>
+            <Button WidthRequest="120"
+                    HeightRequest="50"
+                    Margin="260,650,0,0"
+                    Text="Siguiente >"
+                    BackgroundColor="#002f6c">
+            </Button>
+        </Grid>
+    </ScrollView>
+</ContentPage>

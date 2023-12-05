@@ -4,11 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Cinepolis_v2"
+    xmlns:views="clr-namespace:Cinepolis_v2.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Home"
+             Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate views:Home}" />
+        </Tab>
+        <Tab Title="Movies"
+             Icon="movies.png">
+            <ShellContent ContentTemplate="{DataTemplate views:MoviesPage}" />
+        </Tab>
+        <Tab Title="Snacks"
+             Icon="food.png">
+            <ShellContent ContentTemplate="{DataTemplate views:SnacksPage}" />
+        </Tab>
+    </TabBar>
 
 </Shell>
